@@ -42,7 +42,7 @@ class CashRegister
   end
 
   def void_last_transaction
-    if 
+    if
       return @total = 0
     end
   end
