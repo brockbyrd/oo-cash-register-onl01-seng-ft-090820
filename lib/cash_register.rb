@@ -34,7 +34,6 @@ class CashRegister
   def items
     item_names = []
     @cart.each do | item_info |
-      #test expects product name * quantity...
       for qty in 1..item_info[:quantity]
         item_names << item_info[:name]
       end
@@ -43,7 +42,10 @@ class CashRegister
   end
 
   def void_last_transaction
-    self.total = self.total - self.last_transaction
+    if @cart.length == 0
+      return @total = 0
+    end
+    @total -= self.last_transaction
   end
 
 end
