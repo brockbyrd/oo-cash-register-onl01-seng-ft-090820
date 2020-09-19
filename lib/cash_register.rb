@@ -4,13 +4,13 @@ class CashRegister
 
   attr_accessor :total, :discount, :title, :price, :quantity
 
-  def initialize
+  def initialize(total = 0)
     @total = total
     @discount = 20
   end
 
   def total
-    @total = 0
+    @total 
   end
 
   def add_item(title, price, quantity = 1)
@@ -23,7 +23,8 @@ class CashRegister
     @discount = discount
     if @discount != 0
       @total = @price * @quantity - @discount
-      return "After the discount, the total comes to $#{total}."
+      return "After the discount, the total comes to $#{@total}."
+    else
       return "There is no discount to apply."
     end
   end
