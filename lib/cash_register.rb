@@ -15,9 +15,9 @@ require 'pry'
       def add_item(item, price, quantity = 1)
         i = 0
               while i < quantity do
-                  @items << title
+                  @items << item
                   @last_transaction = price * quantity
-                  @last_transaction_name = title
+                  @last_transaction_name = item
                   i += 1
               end
               self.total += price * quantity
