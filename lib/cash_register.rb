@@ -1,7 +1,7 @@
 require 'pry'
 
 class CashRegister
-  attr_accessor :discount, :total, :last_transaction, :cart
+  attr_accessor :discount, :total, :last_transaction
 
 
   def initialize(discount = 0)
@@ -44,7 +44,7 @@ class CashRegister
 
   def void_last_transaction
     items.delete(@last_transaction)
-    if items.empty?
+    if cart.empty?
       self.total = 0.0
     else
       self.total -= @last_transaction
