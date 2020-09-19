@@ -8,18 +8,19 @@ class CashRegister
     @total = 0
     @discount = discount
     @cart = []
+    @last_transaction = nil
+    @last_transction_name = nil
   end
 
   def add_item(item, price, quantity = 1)
-    item_info = {}
-    item_info[:name] = item
-    item_info[:price] = price
-    item_info[:quantity] = quantity
-
-    @cart << item_info
-
-    @total += price * quantity
-
+    i = 0
+    while i < quantity do
+      @items << total
+      @last_transaction = price * quantity
+      @last_transction_name = title
+      i += 1
+    end
+    self.total += price * quantity
   end
 
   def apply_discount
