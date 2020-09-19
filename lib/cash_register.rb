@@ -2,9 +2,10 @@ require 'pry'
 
 class CashRegister
 
-  def initialize(total)
+  attr_accessor :total
 
-    @total = 0
+  def initialize(total)
+    @total = total
   end
 
   def total
