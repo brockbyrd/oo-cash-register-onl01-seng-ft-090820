@@ -24,24 +24,18 @@ class CashRegister
 
   def apply_discount
     if discount != 0
-   self.total = (total * ((100.0 - discount.to_f)/100)).to_i
-   "After the discount, the total comes to $#{self.total}."
- else
-   "There is no discount to apply."
- end
-  end
-
-  def items
-    item_names = []
-    @cart.each do | item_info |
-      for qty in 1..item_info[:quantity]
-        item_names << item_info[:name]
-      end
+      self.total = (total * ((100.0 - discount.to_f)/100)).to_i
+      "After the discount, the total comes to $#{self.total}."
+    else
+      "There is no discount to apply."
     end
-    item_names
   end
 
-  def void_last_transaction
+def items
+    @items
+end
+
+def void_last_transaction
     cart.delete(@last_transaction)
     if cart.empty?
       self.total = 0.0
