@@ -31,12 +31,18 @@ class CashRegister
     end
   end
 
-def items
-    @items
-end
+  def items
+    item_names = []
+    @cart.each do | item_info |
+      for qty in 1..item_info[:quantity]
+        item_names << item_info[:name]
+      end
+    end
+    item_names
+  end
 
-def void_last_transaction
-    cart.delete(@last_transaction)
+  def void_last_transaction
+    cart.delete(@last_transaction_name)
     if cart.empty?
       self.total = 0.0
     else
