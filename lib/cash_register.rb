@@ -43,7 +43,7 @@ class CashRegister
   end
 
   def void_last_transaction
-    items.delete(@last_transaction)
+    cart.delete(@last_transaction)
     if cart.empty?
       self.total = 0.0
     else
