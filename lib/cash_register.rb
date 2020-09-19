@@ -6,14 +6,16 @@ class CashRegister
 
   def initialize
     @total = 0
+    apply_discount
   end
 
-  def add_item
+  def add_item(title, price)
 
+    @total + price
   end
 
   def apply_discount
-
+    
   end
 
   def items
