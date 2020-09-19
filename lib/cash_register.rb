@@ -14,8 +14,8 @@ require 'pry'
 
       def add_item(item, price, quantity = 1)
         i = 0
-              while i < quantity do
-                  @items << item
+          while i < quantity do
+                  @cart << item
                   @last_transaction = price * quantity
                   @last_transaction_name = item
                   i += 1
@@ -46,9 +46,9 @@ require 'pry'
         cart.delete(@last_transaction_name)
         if cart.empty?
           self.total = 0.0
-        else
-          self.total -= @last_transaction
-        end
+    else
+        self.total -= @last_transaction
       end
+    end
 
 end
