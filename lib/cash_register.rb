@@ -45,7 +45,7 @@ class CashRegister
     if @cart.length == 0
       return @total = 0
     end
-    @total -= self.last_transaction
+    @total -= @last_transaction
   end
 
 end
