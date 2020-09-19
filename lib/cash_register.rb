@@ -8,5 +8,9 @@ class CashRegister
     apply_discount
   end
 
+  def total
+    total
+  end
+
 
 end
