@@ -1,53 +1,48 @@
 require 'pry'
 
 class CashRegister
-  attr_accessor :discount, :total, :last_transaction, :cart
 
+    attr_accessor :total, :discount, :last_transaction
 
-  def initialize(discount = 0)
-    @total = 0
-    @discount = discount
-    @cart = []
-  end
-
-  def add_item(item, price, quantity = 1)
-    item_info = {}
-    item_info[:name] = item
-    item_info[:price] = price
-    item_info[:quantity] = quantity
-
-    @cart << item_info
-
-    @total += price * quantity
-
-  end
-
-  def apply_discount
-    if discount != 0
-      self.total = (total * ((100.0 - discount.to_f)/100)).to_i
-      "After the discount, the total comes to $#{self.total}."
-    else
-      "There is no discount to apply."
+    def initialize(discount = 0)
+        @total = 0
+        @discount = discount
+        @items = []
+        @last_transaction = nil
+        @last_transaction_name = nil
     end
-  end
 
-  def items
-    item_names = []
-    @cart.each do | item_info |
-      for qty in 1..item_info[:quantity]
-        item_names << item_info[:name]
-      end
+    def add_item(title, price, quantity = 1)
+        i = 0
+        while i < quantity do
+            @items << title
+            @last_transaction = price * quantity
+            @last_transaction_name = title
+            i += 1
+        end
+        self.total += price * quantity
     end
-    item_names
-  end
 
-  def void_last_transaction
-    cart.delete(@last_transaction_name)
-    if cart.empty?
-      self.total = 0.0
-    else
-      self.total -= @last_transaction
+    def apply_discount
+        if self.discount == 0
+            "There is no discount to apply."
+        else
+            self.total -= (self.total * (self.discount / 100.0))
+            "After the discount, the total comes to $#{self.total.round}."
+        end
     end
-  end
+
+    def items
+        @items
+    end
+
+    def void_last_transaction
+        items.delete(@last_transaction_name)
+        if items.empty?
+            self.total = 0.0
+        else
+            self.total -= @last_transaction
+        end
+    end
 
 end
